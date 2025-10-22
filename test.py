@@ -1,6 +1,9 @@
 """ A minimal script showing how to run textarena locally """
 
 import textarena as ta 
+from dotenv import load_dotenv
+
+load_dotenv()
 
 agents = {
     0: ta.agents.HumanAgent(),
@@ -18,6 +21,7 @@ while not done:
   player_id, observation = env.get_observation()
   action = agents[player_id](observation)
   done, step_info = env.step(action=action)
+  
 rewards, game_info = env.close()
 print(rewards)
 print(game_info)
