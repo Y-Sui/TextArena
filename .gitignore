@@ -7,6 +7,9 @@ checkpoints
 wandb
 *.out
 
+# Test-time scaling evaluation results
+scaling_results/
+
 ### DEFAULTS FROM GITHUB ###
 __pycache__/
 *.py[cod]
