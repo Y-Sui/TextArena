@@ -1,4 +1,4 @@
-.vscode/
+# .vscode/
 outputs
 *__pycache__/*
 *.bin
@@ -6,6 +6,9 @@ checkpoints
 *.DS_store
 wandb
 *.out
+
+# Test-time scaling evaluation results
+scaling_results/
 
 ### DEFAULTS FROM GITHUB ###
 __pycache__/
@@ -178,3 +181,5 @@ static_temp
 *.mp4
 
 *.env
+
+trajectories/

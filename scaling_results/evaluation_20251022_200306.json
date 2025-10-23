@@ -1,0 +1,850 @@
+{
+  "timestamp": "2025-10-22T19:22:17.708320",
+  "config": {
+    "base_agent_type": "openrouter",
+    "model_name": "anthropic/claude-3.5-haiku",
+    "n_games_per_env": 3
+  },
+  "evaluations": [
+    {
+      "approach": "baseline",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 3,
+      "draws": 0,
+      "losses": 0,
+      "win_rate": 1.0,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 22.756478786468506,
+      "avg_turns": 6.666666666666667,
+      "total_time_seconds": 68.26943635940552,
+      "results": [
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 28.07908844947815,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "1": 1,
+            "0": -1
+          },
+          "winner": 1,
+          "turns": 6,
+          "time_seconds": 21.924031972885132,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 1 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 1 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 18.266315937042236,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "self_consistency_3",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 0,
+      "draws": 0,
+      "losses": 3,
+      "win_rate": 0.0,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 47.368080377578735,
+      "avg_turns": 6.666666666666667,
+      "total_time_seconds": 142.1042411327362,
+      "results": [
+        {
+          "rewards": {
+            "0": -1,
+            "1": 1
+          },
+          "winner": 1,
+          "turns": 8,
+          "time_seconds": 57.0205135345459,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": true,
+              "turn_count": 4,
+              "reason": "The submitted move does not follow the correct format."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "The submitted move does not follow the correct format."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "1": -1,
+            "0": 1
+          },
+          "winner": 0,
+          "turns": 3,
+          "time_seconds": 18.5491361618042,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": true,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": -1,
+            "1": 1
+          },
+          "winner": 1,
+          "turns": 9,
+          "time_seconds": 66.53459143638611,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": true,
+              "turn_count": 4,
+              "reason": "The submitted move does not follow the correct format."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "The submitted move does not follow the correct format."
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "self_consistency_5",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 0,
+      "draws": 1,
+      "losses": 2,
+      "win_rate": 0.0,
+      "draw_rate": 0.3333333333333333,
+      "avg_time_seconds": 83.01425361633301,
+      "avg_turns": 8.333333333333334,
+      "total_time_seconds": 249.04276084899902,
+      "results": [
+        {
+          "rewards": {
+            "0": -1,
+            "1": 1
+          },
+          "winner": 1,
+          "turns": 10,
+          "time_seconds": 87.16560339927673,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": true,
+              "turn_count": 4,
+              "reason": "The submitted move does not follow the correct format."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "The submitted move does not follow the correct format."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "1": -1,
+            "0": 1
+          },
+          "winner": 0,
+          "turns": 5,
+          "time_seconds": 57.8222382068634,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 2,
+              "reason": "The submitted move does not follow the correct format."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": true,
+              "turn_count": 2,
+              "reason": "The submitted move does not follow the correct format."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 0,
+            "1": 0
+          },
+          "winner": null,
+          "turns": 10,
+          "time_seconds": 104.05491924285889,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "The game is a draw!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "The game is a draw!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "best_of_3",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "win_rate": 0.6666666666666666,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 54.53659717241923,
+      "avg_turns": 5.666666666666667,
+      "total_time_seconds": 163.6097915172577,
+      "results": [
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 64.10053324699402,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "1": -1,
+            "0": 1
+          },
+          "winner": 0,
+          "turns": 3,
+          "time_seconds": 25.586483240127563,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": true,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 73.92277503013611,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "iterative_refinement_1",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "win_rate": 0.6666666666666666,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 73.99736285209656,
+      "avg_turns": 6.333333333333333,
+      "total_time_seconds": 221.99208855628967,
+      "results": [
+        {
+          "rewards": {
+            "1": -1,
+            "0": 1
+          },
+          "winner": 0,
+          "turns": 3,
+          "time_seconds": 29.691974878311157,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": true,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 9,
+          "time_seconds": 107.10012078285217,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 85.19999289512634,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "iterative_refinement_2",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 3,
+      "draws": 0,
+      "losses": 0,
+      "win_rate": 1.0,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 159.7662035624186,
+      "avg_turns": 7.333333333333333,
+      "total_time_seconds": 479.29861068725586,
+      "results": [
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 10,
+          "time_seconds": 265.56567573547363,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": -1,
+            "1": 1
+          },
+          "winner": 1,
+          "turns": 4,
+          "time_seconds": 47.232412338256836,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": true,
+              "turn_count": 2,
+              "reason": "cell 4 is already occupied."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 1,
+              "reason": "cell 4 is already occupied."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 8,
+          "time_seconds": 166.5005226135254,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "cot_verification",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 1,
+      "draws": 1,
+      "losses": 1,
+      "win_rate": 0.3333333333333333,
+      "draw_rate": 0.3333333333333333,
+      "avg_time_seconds": 53.283101876576744,
+      "avg_turns": 7.666666666666667,
+      "total_time_seconds": 159.84930562973022,
+      "results": [
+        {
+          "rewards": {
+            "0": 0,
+            "1": 0
+          },
+          "winner": null,
+          "turns": 9,
+          "time_seconds": 60.8548538684845,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "The game is a draw!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "The game is a draw!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 45.36562514305115,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 53.62882661819458,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "ensemble_strategy",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 2,
+      "draws": 0,
+      "losses": 1,
+      "win_rate": 0.6666666666666666,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 58.113988717397056,
+      "avg_turns": 7.666666666666667,
+      "total_time_seconds": 174.34196615219116,
+      "results": [
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 49.18297219276428,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 38.21416711807251,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 9,
+          "time_seconds": 86.94482684135437,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "mcts_3x3",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 1,
+      "draws": 1,
+      "losses": 1,
+      "win_rate": 0.3333333333333333,
+      "draw_rate": 0.3333333333333333,
+      "avg_time_seconds": 198.552964925766,
+      "avg_turns": 8.333333333333334,
+      "total_time_seconds": 595.658894777298,
+      "results": [
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 8,
+          "time_seconds": 199.70546579360962,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 8,
+          "time_seconds": 174.58270812034607,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 0,
+            "1": 0
+          },
+          "winner": null,
+          "turns": 9,
+          "time_seconds": 221.37072086334229,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 5,
+              "reason": "The game is a draw!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "The game is a draw!"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "approach": "temperature_ladder",
+      "env_id": "TicTacToe-v0",
+      "n_games": 3,
+      "wins": 1,
+      "draws": 0,
+      "losses": 2,
+      "win_rate": 0.3333333333333333,
+      "draw_rate": 0.0,
+      "avg_time_seconds": 64.46493522326152,
+      "avg_turns": 8.0,
+      "total_time_seconds": 193.39480566978455,
+      "results": [
+        {
+          "rewards": {
+            "0": -1,
+            "1": 1
+          },
+          "winner": 1,
+          "turns": 10,
+          "time_seconds": 68.84679937362671,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": true,
+              "turn_count": 5,
+              "reason": "The submitted move does not follow the correct format."
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "The submitted move does not follow the correct format."
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 65.55525422096252,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        },
+        {
+          "rewards": {
+            "0": 1,
+            "1": -1
+          },
+          "winner": 0,
+          "turns": 7,
+          "time_seconds": 58.99275207519531,
+          "game_info": {
+            "0": {
+              "role": "Player 0",
+              "invalid_move": false,
+              "turn_count": 4,
+              "reason": "Player 0 has won!"
+            },
+            "1": {
+              "role": "Player 1",
+              "invalid_move": false,
+              "turn_count": 3,
+              "reason": "Player 0 has won!"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
