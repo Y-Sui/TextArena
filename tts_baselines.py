@@ -5,7 +5,6 @@ Test-Time Scaling Approaches for TextArena
 This module demonstrates various test-time scaling techniques that can be used
 to improve LLM performance on TextArena games.
 
-Author: Example implementations for research
 """
 
 import re
@@ -510,7 +509,7 @@ def example_usage():
 
     # Wrap with test-time scaling approach
     # Option 1: Self-consistency
-    agent_sc = SelfConsistencyWrapper(base_agent, n_samples=5, debugging=True)
+    agent_sc = SelfConsistencyWrapper(base_agent, n_samples=3, debugging=True)
 
     # Option 2: Best-of-N
     agent_bon = BestOfNWrapper(base_agent, n_candidates=3, debugging=True)
@@ -545,14 +544,16 @@ def example_usage():
 
 
 if __name__ == "__main__":
-    print("Test-Time Scaling Wrappers for TextArena")
-    print("=" * 50)
-    print("\nAvailable wrappers:")
-    print("1. SelfConsistencyWrapper - Multiple samples + majority vote")
-    print("2. BestOfNWrapper - Generate N candidates, select best via evaluation")
-    print("3. IterativeRefinementWrapper - Generate → Critique → Refine")
-    print("4. CoTVerificationWrapper - Chain-of-thought with verification")
-    print("5. EnsembleStrategyWrapper - Multiple strategies combined")
-    print("6. SimplifiedMCTSWrapper - Simplified Monte Carlo Tree Search")
-    print("7. TemperatureLadderWrapper - Sample at different temperatures")
-    print("\nSee example_usage() for how to use these wrappers.")
+    # print("Test-Time Scaling Wrappers for TextArena")
+    # print("=" * 50)
+    # print("\nAvailable wrappers:")
+    # print("1. SelfConsistencyWrapper - Multiple samples + majority vote")
+    # print("2. BestOfNWrapper - Generate N candidates, select best via evaluation")
+    # print("3. IterativeRefinementWrapper - Generate → Critique → Refine")
+    # print("4. CoTVerificationWrapper - Chain-of-thought with verification")
+    # print("5. EnsembleStrategyWrapper - Multiple strategies combined")
+    # print("6. SimplifiedMCTSWrapper - Simplified Monte Carlo Tree Search")
+    # print("7. TemperatureLadderWrapper - Sample at different temperatures")
+    # print("\nSee example_usage() for how to use these wrappers.")
+    
+    example_usage()

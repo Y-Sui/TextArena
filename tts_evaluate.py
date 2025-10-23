@@ -17,7 +17,7 @@ from typing import Dict, List, Any, Optional
 from datetime import datetime
 
 import textarena as ta
-from test_time_scaling_examples import (
+from tts_baselines import (
     SelfConsistencyWrapper,
     BestOfNWrapper,
     IterativeRefinementWrapper,
@@ -26,9 +26,7 @@ from test_time_scaling_examples import (
     SimplifiedMCTSWrapper,
     TemperatureLadderWrapper,
 )
-
-from dotenv import load_dotenv
-load_dotenv()  # Load environment variables from .env file if present
+from test_api_connection import test_api_connection
 
 class ScalingEvaluator:
     """
@@ -65,7 +63,7 @@ class ScalingEvaluator:
             Dict mapping approach name to wrapped agent
         """
         return {
-            "baseline": base_agent,
+            # "baseline": base_agent,
             "self_consistency_3": SelfConsistencyWrapper(
                 self.create_base_agent(), n_samples=3, debugging=False
             ),
@@ -124,7 +122,7 @@ class ScalingEvaluator:
             turn_count += 1
 
             # Safety limit to prevent infinite games
-            if turn_count > 1000:
+            if turn_count > 100:
                 print(f"Warning: Game exceeded 1000 turns, stopping early")
                 break
 
@@ -152,8 +150,8 @@ class ScalingEvaluator:
         env_id: str,
         approach_name: str,
         agent: ta.Agent,
-        n_games: int = 10,
         opponent: Optional[ta.Agent] = None,
+        n_games: int = 10,
         seeds: Optional[List[int]] = None
     ) -> Dict[str, Any]:
         """
@@ -243,6 +241,7 @@ class ScalingEvaluator:
     def run_full_evaluation(
         self,
         env_ids: List[str],
+        mode: int = 1,
         n_games_per_env: int = 10,
         approaches: Optional[List[str]] = None
     ) -> Dict[str, Any]:
@@ -273,26 +272,56 @@ class ScalingEvaluator:
         # Filter approaches if specified
         if approaches:
             scaling_agents = {k: v for k, v in scaling_agents.items() if k in approaches}
+            
+        # mode 1: compare different scaling approaches against baseline (default agent without TTS prompting)
+        if mode == 1:
+            opponent = self.create_base_agent()
+            for env_id in env_ids:
+                for approach_name, agent in scaling_agents.items():
+                    try:
+                        result = self.evaluate_approach(
+                            env_id=env_id,
+                            approach_name=approach_name,
+                            agent=agent,
+                            opponent=opponent,
+                            n_games=n_games_per_env
+                        )
+                        all_results["evaluations"].append(result)
 
-        # Evaluate each approach on each environment
-        for env_id in env_ids:
-            for approach_name, agent in scaling_agents.items():
-                try:
-                    result = self.evaluate_approach(
-                        env_id=env_id,
-                        approach_name=approach_name,
-                        agent=agent,
-                        n_games=n_games_per_env
-                    )
-                    all_results["evaluations"].append(result)
+                    except Exception as e:
+                        print(f"Error evaluating {approach_name} on {env_id}: {e}")
+                        all_results["evaluations"].append({
+                            "approach": approach_name,
+                            "env_id": env_id,
+                            "error": str(e)
+                        })
+                        
+        # mode 2: compare propsed scaling approache against all other TTS opponent (e.g., best_of_5)
+        elif mode == 2:
+            # define your proposed scaling approach here
+            agent = BestOfNWrapper(
+                self.create_base_agent(), n_candidates=5, debugging=False
+            )
+            for env_id in env_ids:
+                for approach_name, opponent in scaling_agents.items():
+                    try:
+                        result = self.evaluate_approach(
+                            env_id=env_id,
+                            approach_name=approach_name,
+                            agent=agent,
+                            opponent=opponent,
+                            n_games=n_games_per_env
+                        )
+                        all_results["evaluations"].append(result)
 
-                except Exception as e:
-                    print(f"Error evaluating {approach_name} on {env_id}: {e}")
-                    all_results["evaluations"].append({
-                        "approach": approach_name,
-                        "env_id": env_id,
-                        "error": str(e)
-                    })
+                    except Exception as e:
+                        print(f"Error evaluating {approach_name} on {env_id}: {e}")
+                        all_results["evaluations"].append({
+                            "approach": approach_name,
+                            "env_id": env_id,
+                            "error": str(e)
+                        })
+            
 
         # Save results
         timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
@@ -393,20 +422,26 @@ def main():
     )
 
     args = parser.parse_args()
+    
+    # test api connnection
+    if test_api_connection():
+        
+        # Create evaluator
+        evaluator = ScalingEvaluator(
+            base_agent_type=args.agent,
+            model_name=args.model,
+            results_dir=args.results_dir
+        )
 
-    # Create evaluator
-    evaluator = ScalingEvaluator(
-        base_agent_type=args.agent,
-        model_name=args.model,
-        results_dir=args.results_dir
-    )
-
-    # Run evaluation
-    evaluator.run_full_evaluation(
-        env_ids=args.env,
-        n_games_per_env=args.n_games,
-        approaches=args.approaches
-    )
+        # Run evaluation
+        evaluator.run_full_evaluation(
+            env_ids=args.env,
+            n_games_per_env=args.n_games,
+            approaches=args.approaches,
+            mode=2  # Change to 2 to evaluate proposed approach against all others
+        )
+    else:
+        print("API connection failed. Please check your API key and try again.")
 
 
 if __name__ == "__main__":
