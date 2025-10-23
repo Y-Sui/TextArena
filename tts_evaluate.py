@@ -12,6 +12,7 @@ Usage:
 import argparse
 import json
 import time
+import weave
 from pathlib import Path
 from typing import Dict, List, Any, Optional
 from datetime import datetime
@@ -404,7 +405,7 @@ def main():
     parser.add_argument(
         "--n-games",
         type=int,
-        default=10,
+        default=3,
         help="Number of games per environment"
     )
     parser.add_argument(
@@ -420,8 +421,17 @@ def main():
         default="scaling_results",
         help="Directory to save results"
     )
+    parser.add_argument(
+        "--mode",
+        type=int,
+        default=1,
+        choices=[1, 2],
+        help="Evaluation mode: 1 = compare scaling approaches against baseline; 2 = compare proposed approach against all others"
+    )
 
     args = parser.parse_args()
+    
+    weave.init("game_agent")
     
     # test api connnection
     if test_api_connection():
@@ -438,7 +448,7 @@ def main():
             env_ids=args.env,
             n_games_per_env=args.n_games,
             approaches=args.approaches,
-            mode=2  # Change to 2 to evaluate proposed approach against all others
+            mode=1  # Change to 2 to evaluate proposed approach against all others
         )
     else:
         print("API connection failed. Please check your API key and try again.")

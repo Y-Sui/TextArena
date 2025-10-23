@@ -181,3 +181,5 @@ static_temp
 *.mp4
 
 *.env
+
+trajectories/

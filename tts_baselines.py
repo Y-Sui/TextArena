@@ -11,6 +11,7 @@ import re
 from typing import List, Dict, Any, Optional, Callable
 from collections import Counter
 import textarena as ta
+import weave
 
 
 # ============================================================================
@@ -42,6 +43,7 @@ class SelfConsistencyWrapper(ta.AgentWrapper):
             self.original_temp = agent.kwargs.get('temperature', 1.0)
             agent.kwargs['temperature'] = temperature
 
+    @weave.op()
     def __call__(self, observation: str) -> str:
         responses = []
 
@@ -103,6 +105,7 @@ class BestOfNWrapper(ta.AgentWrapper):
             "of the best action."
         )
 
+    @weave.op()
     def __call__(self, observation: str) -> str:
         # Generate candidate actions
         candidates = []
@@ -232,6 +235,7 @@ class CoTVerificationWrapper(ta.AgentWrapper):
         self.max_verification_attempts = max_verification_attempts
         self.debugging = debugging
 
+    @weave.op()
     def __call__(self, observation: str) -> str:
         original_prompt = self.agent.system_prompt
 
@@ -310,7 +314,7 @@ class EnsembleStrategyWrapper(ta.AgentWrapper):
             "Play defensively to minimize opponent's options.",
             "Play strategically for long-term position.",
         ]
-
+    @weave.op()
     def __call__(self, observation: str) -> str:
         original_prompt = self.agent.system_prompt
         actions = []
@@ -380,6 +384,7 @@ class SimplifiedMCTSWrapper(ta.AgentWrapper):
         self.rollout_depth = rollout_depth
         self.debugging = debugging
 
+    @weave.op()
     def __call__(self, observation: str) -> str:
         original_prompt = self.agent.system_prompt
         candidate_actions = {}
@@ -462,6 +467,7 @@ class TemperatureLadderWrapper(ta.AgentWrapper):
         if hasattr(agent, 'kwargs'):
             self.original_temp = agent.kwargs.get('temperature', 1.0)
 
+    @weave.op()
     def __call__(self, observation: str) -> str:
         actions = []
 
