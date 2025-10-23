@@ -6,7 +6,7 @@ This script helps you systematically evaluate different test-time scaling
 approaches on TextArena benchmarks.
 
 Usage:
-    python evaluate_scaling_approaches.py --env TicTacToe-v0 --agent openrouter --n-games 10
+    python evaluate_scaling_approaches.py --env TicTacToe-v0 --agent openrouter --n-games 3
 """
 
 import argparse
@@ -27,6 +27,8 @@ from test_time_scaling_examples import (
     TemperatureLadderWrapper,
 )
 
+from dotenv import load_dotenv
+load_dotenv()  # Load environment variables from .env file if present
 
 class ScalingEvaluator:
     """
